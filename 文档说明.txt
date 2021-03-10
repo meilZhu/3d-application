@@ -1,0 +1,3 @@
+1、文件views里index中index.vue是包含底部的文件；basisIndex 是不包含底部的文件
+
+2、项目中用到的基础组件都在components 下面相对应 views 下面的相同的目录名下（这里是全局自动祖册）
