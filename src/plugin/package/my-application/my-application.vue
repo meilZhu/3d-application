@@ -74,7 +74,7 @@
       </el-main>
       <div class="app-right-menu" :style="{height: engineHeight + 'px', width: rightMenuWidth + 'px', border: 'none'}">
         <!-- 页面左侧的tree -->
-        <slot name="left-tree"></slot>
+        <slot name="right-tree"></slot>
       </div>
 
     </el-container>
@@ -156,15 +156,13 @@
         },
         deep: true
       },
-      isCollapsedMenu(val) {
-        this.isMenuCollapse = val
-      }
     },
     created() {
       this.setEngineStyle({
         width: window.innerWidth - leftWidth - paddingLeft - this.rightMenuWidth,
         height: window.innerHeight - this.headerHeight
       })
+      this.isMenuCollapse = this.isCollapsedMenu
     },
     mounted() {
       this.initJtWeb()
@@ -222,7 +220,7 @@
       },
 
       /**
-       * 右侧模型树形的相关操作
+       * 左侧模型树形的相关操作
        */
       changeModelSearch() {
         this.$emit('changeModelSearch')
@@ -239,7 +237,7 @@
         this.$nextTick(() => {
           this.isCollapse = !this.isCollapse
         })
-        // this.$emit('onCollapse')
+        this.$emit('onCollapse', this.isCollapse)
       },
 
       // 右侧树形数据点击事件

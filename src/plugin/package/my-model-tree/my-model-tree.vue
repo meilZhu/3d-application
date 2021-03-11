@@ -151,7 +151,6 @@
       },
       expandTreeNode: {
         handler: function(val) {
-          console.log(val)
           this.treeModelData = _.cloneDeep(val)
           this.treeOperationModelData = _.cloneDeep(val)
         },
@@ -294,7 +293,7 @@
       }
     },
     beforeDestroy() {
-      console.log('1111')
+      // console.log('1111')
     }
   }
 </script>
