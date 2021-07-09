@@ -1,0 +1,17 @@
+.search-part {
+  /deep/ .el-dialog__body {
+    padding: 20px;
+  }
+
+  .search-content {
+    .component-select {
+      width: 510px;
+    }
+  }
+
+  .g-mr10 {
+    border: none !important;
+    margin: 0 10px !important;
+  }
+
+}

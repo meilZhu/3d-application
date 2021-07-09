@@ -3,22 +3,36 @@
  * @Date: 2021-03-04 16:02:07
  * @Author: manyao.zhu
  */
+import { v4 as uuidv4 } from 'uuid'
 
 /**
  * @description 用于遍历处理模型的数据格式满足引擎使用
  * @param {*} list 需要遍历的数据
  */
-export const formatModelData = (list) => {
+
+const creatUuid = () => {
+  return uuidv4().replaceAll('-', '')
+}
+
+export const formatModelData = (list, arr) => {
   if(list && list.length > 0){
     list.forEach(l => {
       if(l.children){
-        formatModelData(l.children)
+        formatModelData(l.children, arr)
       }
       l.visible = true
-      // l.treeType = 'modelTree'
       l.showCheckbox = false
       l.isCurrent = true
+      l.isSelected = false
       l.treeName = `${l.englishPartName} | ${l.revision}`
+      if (arr.some( t => t === l.key)) {
+        console.log('有相同的', l.key);
+        l.key = creatUuid()
+        console.log('重新生成的', l.key);
+        arr.push(l.key)
+      } else {
+        arr.push(l.key)
+      }
       if(!l.matrix1){
         return
       }
@@ -42,22 +56,43 @@ export const formatModelData = (list) => {
  * @description 用于处理3d左侧树形结构勾选时状态的变化 (当selectKeys发生变化，遍历expandTreeNode)
  * @param list // 需要遍历的数组
  * @param arr // 勾选中的数据
+ * @param bool // 是否是点击模型，
  */
-export const hanlderSelectData = (list, arr) => {
+ export const hanlderSelectData = (list, key, bool) => {
   if (list && list.length) {
     list.forEach(l => {
-      if (arr.some(t => t === l.key)) {
-        l.isSelected = true
+      if (l.key === key) {
+        if (bool) {
+          l.isSelected = true
+        } else {
+          l.isSelected = !l.isSelected
+        }
       } else {
         l.isSelected = false
       }
 
       if (l.children) {
-        hanlderSelectData(l.children, arr)
+        hanlderSelectData(l.children, key, bool)
       }
     })
   }
 }
+
+// export const hanlderSelectData = (list, arr) => {
+//   if (list && list.length) {
+//     list.forEach(l => {
+//       if (arr.some(t => t === l.key)) {
+//         l.isSelected = true
+//       } else {
+//         l.isSelected = false
+//       }
+
+//       if (l.children) {
+//         hanlderSelectData(l.children, arr)
+//       }
+//     })
+//   }
+// }
 
 /**
  * @description 用于处理3d左侧树形结构眼睛点击时，父节点的选中问题
@@ -148,5 +183,27 @@ export const ergodicChildNodeKeys = (list, arr) => {
     }
   });
   return newArr;
+}
+
+/**
+ * @description 遍历模型树，求出他的长度
+ * @param {*} list 需要遍历的模型树
+ * @param {*} num 长度
+ */
+export const ergodicModelTreeLen = (list) => {
+  let len = 0
+  if (!list || !list.length) {
+    return len
+  }
+
+  list.forEach( item => {
+    if (item.children) {
+     len += ergodicModelTreeLen(item.children)
+    }
+  })
+
+  len += list.length
+
+  return len
 }
 

@@ -1,0 +1,64 @@
+/* 3d的盒子的宽高继承 */
+.siemens-inner-app-container {
+  height: 100%;
+  width: 100%;
+}
+#contentBlock, #viewerHost {
+  height: 100%;
+  width: 100%;
+}
+.siemens-spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+.siemens-spinner {
+  height: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $--static-color;
+}
+.siemens-spinner-label {
+  text-align: left;
+  color: $--static-color;
+}
+
+.siemens-spinner-circle {
+  background-color: $--static-color;
+}
+.siemens-hidden {
+  display: none;
+}
+
+#contentBlock, #viewerHost {
+  height: 100%;
+  width: 100%;
+}
+
+/* viewer color */
+#component {
+  // background: #009999;
+  height: 100%;
+  width: 100%;
+}
+
+
+#modelViews {
+  display: none;
+}
+
+.siemens-app-container {
+  height: 100%;
+  width: 100%;
+  /* padding: 5px; */
+}
+
+.siemens-inner-app-container {
+  height: 100%;
+  width: 100%;
+}

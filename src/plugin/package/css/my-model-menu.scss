@@ -1,0 +1,92 @@
+.menu-action {
+  display: flex;
+  align-items: center;
+  .menu-content {
+    margin: 0 5px;
+    [class*=' el-ndqs-'],
+    [class^='el-ndqs-'] {
+      font-size: 38px !important;
+      color: $--static-color;
+      &:hover {
+        color: $--color;
+      }
+    }
+    [class*= 'el-icon-'],
+    [class^= 'el-icon-'] {
+      font-size: 34px !important;
+      color: $--static-color;
+      &:hover {
+        color: $--color;
+      }
+    }
+  }
+  .g-mr10 {
+    border: none !important;
+    margin: 0 10px !important;
+  }
+
+  /deep/ .el-button + .el-button {
+    margin-left: 0;
+  }
+
+  .heatmap-value-popup {
+    position: fixed;
+    z-index: 1000;
+    background: #003e59;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+
+  .my_btn {
+    border: none !important;
+    padding: 0 !important;
+    .el-userdefine-menu {
+      width: 30px;
+      height: 30px;
+      fill: $--static-color;
+      margin: 0 5px;
+      &:hover {
+        fill: $--color;
+      }
+    }
+  }
+}
+
+.my-tip-content {
+  padding: 0px 0px 0px 10px !important;
+  [class*=' el-ndqs-'],
+  [class^='el-ndqs-'] {
+    font-size: 38px !important;
+    color: $--static-color;
+    &:hover {
+      color: $--color;
+    }
+  }
+  [class*= 'el-icon-'],
+  [class^= 'el-icon-'] {
+    font-size: 34px !important;
+    color: $--static-color;
+    &:hover {
+      color: $--color;
+    }
+  }
+  .g-mr10 {
+    border: none !important;
+    margin: 0 10px !important;
+  }
+}
+
+.action-color-menu {
+  .el-dropdown-menu__item {
+    line-height: 35px;
+  }
+  .action-color-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .el-color-picker {
+    vertical-align: middle;
+  }
+}

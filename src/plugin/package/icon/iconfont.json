@@ -1,0 +1,261 @@
+{
+  "id": "2032221",
+  "name": "summer",
+  "font_family": "ndqs-iconfont",
+  "css_prefix_text": "el-ndqs-",
+  "description": "summer",
+  "glyphs": [
+    {
+      "icon_id": "1268",
+      "name": "减",
+      "font_class": "subtract",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "15167637",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "11641897",
+      "name": "筛选",
+      "font_class": "filter",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    },
+    {
+      "icon_id": "15597314",
+      "name": "清空",
+      "font_class": "clear",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "12723179",
+      "name": "波点面板",
+      "font_class": "points",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "15653038",
+      "name": "folder",
+      "font_class": "folder",
+      "unicode": "e68b",
+      "unicode_decimal": 59019
+    },
+    {
+      "icon_id": "697336",
+      "name": "复选选中",
+      "font_class": "checkbox",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "805957",
+      "name": "选中",
+      "font_class": "selectbox",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "1028365",
+      "name": "数据统计",
+      "font_class": "statistics",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "5330665",
+      "name": "眼睛",
+      "font_class": "eye",
+      "unicode": "e7b4",
+      "unicode_decimal": 59316
+    },
+    {
+      "icon_id": "5330666",
+      "name": "眼睛-斜线",
+      "font_class": "eyeclose",
+      "unicode": "e7b5",
+      "unicode_decimal": 59317
+    },
+    {
+      "icon_id": "5964565",
+      "name": "编辑",
+      "font_class": "edit",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "6427802",
+      "name": "组织架构",
+      "font_class": "structure-tree",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "14463253",
+      "name": "错误",
+      "font_class": "close",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "15797084",
+      "name": "【视图】点",
+      "font_class": "point",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "2404489",
+      "name": "填充",
+      "font_class": "tianchong",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "5330439",
+      "name": "填色",
+      "font_class": "tianse",
+      "unicode": "e78d",
+      "unicode_decimal": 59277
+    },
+    {
+      "icon_id": "12990694",
+      "name": "登出-circle-r-线",
+      "font_class": "logout",
+      "unicode": "e89f",
+      "unicode_decimal": 59551
+    },
+    {
+      "icon_id": "925316",
+      "name": "设置",
+      "font_class": "setting",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "16852646",
+      "name": "颜色选择器",
+      "font_class": "color-select",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "9874558",
+      "name": "KHCFDC_组织结构",
+      "font_class": "structure",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "1422727",
+      "name": "展开",
+      "font_class": "unfold",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "1727436",
+      "name": "211铃铛-线性",
+      "font_class": "bell",
+      "unicode": "e8c0",
+      "unicode_decimal": 59584
+    },
+    {
+      "icon_id": "2471399",
+      "name": "颜色选择器",
+      "font_class": "color-selector",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "4641126",
+      "name": "放大",
+      "font_class": "zoom-in",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "4641127",
+      "name": "缩小",
+      "font_class": "zoom-out",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "6798095",
+      "name": "三维模型",
+      "font_class": "part",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "6941975",
+      "name": "展开",
+      "font_class": "fold",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "8776631",
+      "name": "view",
+      "font_class": "visible",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "8776676",
+      "name": "view_off",
+      "font_class": "invisible",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "8776842",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "8777509",
+      "name": "arrow_up",
+      "font_class": "arrow-up",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
+      "icon_id": "8777510",
+      "name": "arrow_left",
+      "font_class": "arrow-left",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "8777511",
+      "name": "arrow_down",
+      "font_class": "arrow-down",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "8777512",
+      "name": "arrow_right",
+      "font_class": "arrow-right",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "15885466",
+      "name": "【视图】透视",
+      "font_class": "cube-wireframe",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    }
+  ]
+}

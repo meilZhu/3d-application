@@ -1,12 +1,18 @@
 {
   "name": "@styleofpicasso/3d-application",
-  "version": "1.0.4",
+  "version": "1.4.0",
   "description": "A 3d-appication",
   "author": "styleofpicasso",
   "main": "dist/index.min.js",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "src/plugin"
+  ],
+  "keywords": [
+    "3d",
+    "jt-web",
+    "threejs"
   ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -19,7 +25,8 @@
     "buildPre": "node build/buildPre.js"
   },
   "dependencies": {
-    "@ithinkdt/jt-web": "^0.5.0",
+    "@ithinkdt/jt-web": "^0.15.4",
+    "@ithinkdt/vue-virsual-tree": "^1.0.4",
     "ali-oss": "^6.1.0",
     "date-fns": "^1.30.1",
     "echarts": "^4.2.0-rc.2",
@@ -74,6 +81,7 @@
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "uuid": "^8.3.2",
     "vue-image-crop-upload": "^2.5.0",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",

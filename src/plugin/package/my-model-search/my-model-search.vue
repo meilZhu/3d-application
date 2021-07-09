@@ -155,7 +155,7 @@
         if (value && value.length > 0) {
           this.compId = value[value.length - 1]
           const nameArr = value.slice(0, value.length - 1)
-          this.$emit('changeComponentId', {list: this.componentList, id: value[value.length - 1], nameArr})
+          this.$emit('changeComponentId', {list: this.compList, id: value[value.length - 1], nameArr})
         } else {
           this.compId = ''
         }

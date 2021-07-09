@@ -1,5 +1,5 @@
 <!--
- * @fileName:模型右侧的树形组件
+ * @fileName:模型左侧的树形组件
  * @Date: 2021-03-04 18:22:50
  * @Author: manyao.zhu
 -->
@@ -81,15 +81,15 @@
         </div>
       </div>
     </el-menu>
-    <el-button class="aside-fold-arrow" type="text" @click="onCollapse">
-      <i v-if="!isCollapse" class="el-ndqs-unfold"></i>
-      <i v-if="isCollapse" class="el-ndqs-fold"></i>
+    <el-button class="aside-fold-arrow" :class="isCollapse ? 'close' : 'open'" type="text" @click="onCollapse">
+      <i :class="isCollapse ? 'el-ndqs-fold' : 'el-ndqs-unfold'"></i>
     </el-button>
   </div>
 </template>
 
 <script>
-  import { ergodicParentNodeStatus, ergodicTreeChangeNodeStatus, ergodicChildNodeKeys, filterVirtualTree, hanlderSelectData } from '../../utils/format'
+  import { ergodicParentNodeStatus, ergodicTreeChangeNodeStatus, ergodicChildNodeKeys, filterVirtualTree, hanlderSelectData, ergodicModelTreeLen } from '../../utils/format'
+  import _ from 'lodash'
   export default {
     name: 'MyModelTree',
     data() {
@@ -101,12 +101,25 @@
           label: 'treeName'
         },
         // 上一步选中的key
-        prevKey: null,
+        // prevKey: null,
         isFirstFilter: true,
         // 暂存tree展示的数据
         treeOperationModelData: [],
         // tree展示的数据
-        treeModelData: []
+        treeModelData: [],
+      }
+    },
+    computed: {
+      prevKey: {
+        get() {
+          return this.value
+        },
+        set(val) {
+          this.$emit('input', val)
+        }
+      },
+      modelTreeLen() {
+        return ergodicModelTreeLen(this.treeModelData)
       }
     },
     props: {
@@ -142,11 +155,21 @@
       hasOtherTree: {
         type: Boolean,
         default: false
+      },
+      value: {
+        type: String,
+        default: null
+      },
+      // 是否是外部模型点击
+      isModelChange: {
+        type: Boolean,
+        default: false
       }
     },
     watch: {
       selectedKeys(val){
         this.$refs.tree.setSelectedKeys(val)
+        hanlderSelectData(this.treeModelData, this.prevKey, this.isModelChange)
         this.$forceUpdate()
       },
       expandTreeNode: {
@@ -210,7 +233,6 @@
           window.JT2GoOfficeApp.ObjectFactory.getBrowserContainer().toggleSelection(false, '1:' + this.prevKey)
         }
         this.prevKey = key
-        console.log(isSelected)
         window.JT2GoOfficeApp.ObjectFactory.getBrowserContainer().toggleSelection(!isSelected, '1:' + key)
         const keys = arr.length ? arr : [key]
         this.selectChange(keys)
@@ -234,17 +256,24 @@
           this.handleModelTree(selectedKeys)
           return
         }
+        // 追加当通过模型选择一些key 树形结构上没有
+        if (keys.length !== 1 && keys.length === this.modelTreeLen && keys.length < this.selectedKeys.length && keys.every( t => this.selectedKeys.some( it => it === t))) {
+          selectedKeys = []
+          this.handleModelTree(selectedKeys)
+          return
+        }
+
         if ((keys.length !== 1 && this.selectedKeys.length < keys.length) || (keys.length !== 1 && !this.selectedKeys.length) || (keys.length !== 1 && this.selectedKeys.length > keys.length)) {
           selectedKeys = keys
           this.handleModelTree(selectedKeys)
           return
         }
-        if (keys.length !== 1 && this.selectedKeys.length === keys.length && keys.some( t => t === this.selectedKeys[0])) {
+        if (keys.length !== 1 && this.selectedKeys.length === keys.length && keys.every( t => this.selectedKeys.some( it => it === t))) {
           selectedKeys = []
           this.handleModelTree(selectedKeys)
           return
         }
-        if (keys.length !== 1 && this.selectedKeys.length === keys.length && !keys.some( t => t === this.selectedKeys[0])) {
+        if (keys.length !== 1 && this.selectedKeys.length === keys.length && !keys.every( t => this.selectedKeys.some( it => it === t))) {
           selectedKeys = keys
           this.handleModelTree(selectedKeys)
           return
@@ -267,7 +296,6 @@
 
       // 处理点击树形时的数据变化
       handleModelTree(keys) {
-        hanlderSelectData(this.treeModelData, keys)
         this.$emit('selectChange', keys)
       },
 
@@ -291,15 +319,12 @@
           }, 1000)
         }
       }
-    },
-    beforeDestroy() {
-      // console.log('1111')
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  @import '../css/index';
+  @import '../css/variable';
   .aside-menu {
     .el-menu-vertical-three {
       font-size: 14px;
@@ -314,8 +339,9 @@
       }
 
       .tree-action {
-        padding: 2px 10px;
+        padding: 2px 0;
         height: 46px;
+        display: flex;
         border-bottom: 1px solid #e2e2e2;
         [class*='el-ndqs-'],
         [class^='el-ndqs-'],
@@ -337,6 +363,10 @@
           }
         }
       }
+    }
+    .g-mr10 {
+      border: none !important;
+      margin: 0 10px  !important;
     }
     .tree-wrap {
       overflow-y: auto;
@@ -368,14 +398,40 @@
     .el-menu--collapse {
       width: 38px;
     }
+    $myWid: 40px;
     .aside-fold-arrow {
       position: absolute;
       bottom: 0;
-      right: 0;
       padding: 8px;
+      z-index: 9;
+
+      $time: 0.25s;
+      transition: $time linear;
+      -moz-transition: $time linear; /* Firefox 4 */
+      -webkit-transition: $time linear; /* Safari 和 Chrome */
+      -o-transition: $time linear; /* Opera */
       i {
-        font-size: 24px;
+        display: inline-block;
+        width: $myWid;
+        height: $myWid;
+        line-height: $myWid;
+        font-size: 22px;
+        border-radius: $myWid;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.1);
+        color: #fff;
       }
+    }
+    .aside-fold-arrow.close {
+      position: fixed;
+      left: -30px;
+    }
+    .aside-fold-arrow.close:hover {
+      left: -8px;
+    }
+    .aside-fold-arrow.open {
+      position: absolute;
+      right: 0;
     }
     .tree-search {
       padding: 10px 20px 0;
@@ -419,8 +475,8 @@
     .aside-fold-arrow {
       [class*=' el-ndqs-'],
       [class^='el-ndqs-'] {
-        font-size: 30px;
-        color: $--static-color;
+        // font-size: 30px;
+        // color: $--static-color;
         &:hover {
           color: $--color;
         }

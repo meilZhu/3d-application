@@ -1,4 +1,9 @@
-// 活动颜色
-$--color: #409eff;
-// 静止颜色
-$--static-color: #333333;
+@charset "utf-8";
+@import '../icon/iconfont.css';
+
+@import './variable.scss';
+
+@import './my-application.scss';
+@import './my-model-menu.scss';
+@import './my-model-tree.scss';
+@import './my-model-search.scss';
