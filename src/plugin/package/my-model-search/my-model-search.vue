@@ -6,7 +6,7 @@
 
 
 <template>
-  <el-dialog title="打开3D模型" :modal-append-to-body="false" :visible.sync="isShow" class="search-part" width="800px">
+  <el-dialog title="打开3D模型" :modal-append-to-body="false" :visible.sync="isShow" class="search-part" :width="800 / 1920 * 100 + 'vw'">
     <div class="g-text-center" v-if="showTab">
       <el-radio-group v-model="activeTab" class="g-mb30">
         <el-radio-button label="component">选择Component</el-radio-button>

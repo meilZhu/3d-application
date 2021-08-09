@@ -4,6 +4,7 @@
  * @Author: manyao.zhu
  */
 import { v4 as uuidv4 } from 'uuid'
+import { setIndexedDB, getIndexedDB } from './storage'
 
 /**
  * @description 用于遍历处理模型的数据格式满足引擎使用
@@ -205,5 +206,17 @@ export const ergodicModelTreeLen = (list) => {
   len += list.length
 
   return len
+}
+
+// 用于判断当前是否需要重置模型数据
+export const isResetModelData = () => {
+  const time = (new Date()).getTime()
+  const originTime = Number(getIndexedDB())
+  if (originTime && originTime > time) {
+    return false
+  } else {
+    setIndexedDB(time + 7 * 24 * 60 * 60 * 1000)
+    return true
+  }
 }
 

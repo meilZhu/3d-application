@@ -115,7 +115,7 @@
   const leftMinWidth = 0
   window.jtWeb = null
   import jt_web from '@ithinkdt/jt-web';
-  import { formatModelData, hanlderSelectData } from '../../utils/format'
+  import { formatModelData, hanlderSelectData, isResetModelData } from '../../utils/format'
   import _ from 'lodash'
   export default {
     name: 'MyApplication',
@@ -199,7 +199,11 @@
           formatModelData([data], [])
           const obj = _.cloneDeep(data);
           this.modelTreeData = [obj]
-          window.jtWeb.render(obj);
+          if (!isResetModelData()) {
+            window.jtWeb.render(obj);
+          } else {
+            window.jtWeb.refresh(obj)
+          }
         },
         deep: true
       },
@@ -273,13 +277,14 @@
               window.viewerManager.viewer.addEventListener("pointSelectedEvent", (pointIndexs) => {
                 _self.$emit('selectPointChange', pointIndexs.data)
               });
+              // 测点右击事件
               window.viewerManager.viewer.addEventListener("pointContextEvent", (pointIndex) => {
                 _self.$emit('pointRightMouseEvent', pointIndex.data)
               })
+            },
+            onLoadComplete() {
               // 做延迟，保证模型已经加载好
-              setTimeout(() => {
-                window.jtWeb.getController().setColor('#B1AFAB')
-              }, 4000)
+              _self.$emit('setTemplate')
             }
           },
           points: this.pointsTreeNode,

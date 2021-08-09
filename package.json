@@ -1,6 +1,6 @@
 {
   "name": "@styleofpicasso/3d-application",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "description": "A 3d-appication",
   "author": "styleofpicasso",
   "main": "dist/index.min.js",
@@ -25,7 +25,7 @@
     "buildPre": "node build/buildPre.js"
   },
   "dependencies": {
-    "@ithinkdt/jt-web": "^0.15.4",
+    "@ithinkdt/jt-web": "^0.16.1",
     "@ithinkdt/vue-virsual-tree": "^1.0.4",
     "ali-oss": "^6.1.0",
     "date-fns": "^1.30.1",
@@ -37,6 +37,7 @@
     "vue-better-calendar": "^1.3.2",
     "vue-calendar-component": "^2.7.4",
     "vue-echart": "^1.0.5",
+    "vue-paginate-al": "^1.1.6",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

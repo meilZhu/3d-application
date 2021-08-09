@@ -11,14 +11,10 @@
       font-size: 14px;
     }
 
-    .g-mr10 {
-      border: none !important;
-      margin: 0 10px !important;
-    }
-
     .tree-action {
-      padding: 2px 10px;
+      padding: 2px 0;
       height: 46px;
+      display: flex;
       border-bottom: 1px solid #e2e2e2;
       [class*='el-ndqs-'],
       [class^='el-ndqs-'],
@@ -40,6 +36,10 @@
         }
       }
     }
+  }
+  .g-mr10 {
+    border: none !important;
+    margin: 0 10px  !important;
   }
   .tree-wrap {
     overflow-y: auto;
@@ -71,14 +71,40 @@
   .el-menu--collapse {
     width: 38px;
   }
+  $myWid: 40px;
   .aside-fold-arrow {
     position: absolute;
     bottom: 0;
-    right: 0;
     padding: 8px;
+    z-index: 9;
+
+    $time: 0.25s;
+    transition: $time linear;
+    -moz-transition: $time linear; /* Firefox 4 */
+    -webkit-transition: $time linear; /* Safari 和 Chrome */
+    -o-transition: $time linear; /* Opera */
     i {
-      font-size: 24px;
+      display: inline-block;
+      width: $myWid;
+      height: $myWid;
+      line-height: $myWid;
+      font-size: 22px;
+      border-radius: $myWid;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.1);
+      color: #fff;
     }
+  }
+  .aside-fold-arrow.close {
+    position: fixed;
+    left: -30px;
+  }
+  .aside-fold-arrow.close:hover {
+    left: -8px;
+  }
+  .aside-fold-arrow.open {
+    position: absolute;
+    right: 0;
   }
   .tree-search {
     padding: 10px 20px 0;
@@ -122,8 +148,8 @@
   .aside-fold-arrow {
     [class*=' el-ndqs-'],
     [class^='el-ndqs-'] {
-      font-size: 30px;
-      color: $--static-color;
+      // font-size: 30px;
+      // color: $--static-color;
       &:hover {
         color: $--color;
       }
