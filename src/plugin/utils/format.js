@@ -5,6 +5,7 @@
  */
 import { v4 as uuidv4 } from 'uuid'
 import { setIndexedDB, getIndexedDB } from './storage'
+import { trim } from 'lodash'
 
 /**
  * @description 用于遍历处理模型的数据格式满足引擎使用
@@ -174,11 +175,11 @@ export const ergodicChildNodeKeys = (list, arr) => {
         children: ab,
       };
 
-      if ((item[prop] && item[prop].toUpperCase().indexOf(_.trim(str).toUpperCase()) !== -1) || (ab && ab.length)) {
+      if ((item[prop] && item[prop].toUpperCase().indexOf(trim(str).toUpperCase()) !== -1) || (ab && ab.length)) {
         newArr.push(obj);
       }
     } else {
-      if (item[prop] && item[prop].toUpperCase().indexOf(_.trim(str).toUpperCase()) !== -1) {
+      if (item[prop] && item[prop].toUpperCase().indexOf(trim(str).toUpperCase()) !== -1) {
         newArr.push(item);
       }
     }

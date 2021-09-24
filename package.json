@@ -1,6 +1,6 @@
 {
   "name": "@styleofpicasso/3d-application",
-  "version": "1.4.3",
+  "version": "1.4.8",
   "description": "A 3d-appication",
   "author": "styleofpicasso",
   "main": "dist/index.min.js",
@@ -25,7 +25,7 @@
     "buildPre": "node build/buildPre.js"
   },
   "dependencies": {
-    "@ithinkdt/jt-web": "^0.16.1",
+    "@ithinkdt/jt-web-3d": "0.0.1",
     "@ithinkdt/vue-virsual-tree": "^1.0.4",
     "ali-oss": "^6.1.0",
     "date-fns": "^1.30.1",

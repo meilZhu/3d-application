@@ -21,17 +21,17 @@
       </div>
       <div class="g-text-center" v-loading="loading">
         <el-table class="g-mb15" :data="list" height="300" border highlight-current-row @current-change="onSelectRow">
-          <el-table-column prop="partNumber" label="Part No" width="150px"></el-table-column>
-          <el-table-column prop="partName" label="Part Name"></el-table-column>
-          <el-table-column prop="revision" label="Rversion" width="100px"></el-table-column>
-          <el-table-column prop="maturity" label="Maturity" width="150px"></el-table-column>
+          <el-table-column prop="partNumber" label="Part No" min-width="130px"></el-table-column>
+          <el-table-column prop="partName" label="Part Name" min-width="230px"></el-table-column>
+          <el-table-column prop="revision" label="Rversion" min-width="100px"></el-table-column>
+          <el-table-column prop="maturity" label="Maturity" min-width="130px"></el-table-column>
         </el-table>
         <!-- <el-pagination background layout="prev, pager, next" :page-size="pageSize" :total="total" @current-change="onChangePageNo"></el-pagination> -->
       </div>
     </div>
 
     <el-form v-if="activeTab==='component'" ref="searchComponent" class="search-content" v-loading="loading">
-      <el-form-item label="Component" label-width="150px">
+      <el-form-item label="Component" :label-width="150 / 1920 * 100 + 'vw'">
         <el-cascader :options="compList" :props="cascaderProps" class="component-select" clearable @change="onChangeComponent"></el-cascader>
       </el-form-item>
     </el-form>
@@ -86,6 +86,16 @@
         type: Boolean,
         default: false
       },
+      // 是否启用vw单位
+      isUseVw: {
+        type: Boolean,
+        default: true
+      },
+      // 启用vw单位的传化比例
+      vwPortRadio: {
+        type: Number,
+        default: 1920
+      }
     },
     watch: {
       value(val) {
@@ -164,7 +174,7 @@
       // 提交事件
       onSubmit() {
         if (this.activeTab === 'prd') {
-          this.$emit('onSubmit', {type: 'prd', id: this.currentRow.id})
+          this.$emit('onSubmit', {type: 'prd', id: this.currentRow.id, componentId: this.currentRow.componentId})
           return
         }
         this.$emit('onSubmit', {type: 'component', id: this.compId})

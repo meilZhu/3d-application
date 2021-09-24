@@ -30,7 +30,7 @@
         <div class="tree-search" v-if="expandTreeNode.length">
           <el-input
             class="search-input"
-            :style="{width: asideWidth - 40 + 'px'}"
+            :style="{width: isUseVw ? (asideWidth - 40) / vwPortRadio * 100 + 'vw' : asideWidth - 40 + 'px'}"
             v-model="keyword"
             placeholder="搜索关键字"
             @blur="focus = false"
@@ -89,7 +89,7 @@
 
 <script>
   import { ergodicParentNodeStatus, ergodicTreeChangeNodeStatus, ergodicChildNodeKeys, filterVirtualTree, hanlderSelectData, ergodicModelTreeLen } from '../../utils/format'
-  import _ from 'lodash'
+  import { cloneDeep, chunk } from 'lodash'
   export default {
     name: 'MyModelTree',
     data() {
@@ -164,6 +164,16 @@
       isModelChange: {
         type: Boolean,
         default: false
+      },
+      // 是否启用vw单位
+      isUseVw: {
+        type: Boolean,
+        default: true
+      },
+      // 启用vw单位的传化比例
+      vwPortRadio: {
+        type: Number,
+        default: 1920
       }
     },
     watch: {
@@ -174,8 +184,8 @@
       },
       expandTreeNode: {
         handler: function(val) {
-          this.treeModelData = _.cloneDeep(val)
-          this.treeOperationModelData = _.cloneDeep(val)
+          this.treeModelData = cloneDeep(val)
+          this.treeOperationModelData = cloneDeep(val)
         },
         deep: true
       },
@@ -215,7 +225,7 @@
       // 清除检索模型
       onClear() {
         this.keyword = ''
-        this.treeModelData = _.cloneDeep(this.treeOperationModelData)
+        this.treeModelData = cloneDeep(this.treeOperationModelData)
         this.$refs.tree.setCheckedKeys(this.selectedKeys)
       },
 
@@ -280,7 +290,7 @@
         }
 
         // 复选的处理
-        // const newArr = _.chunk(keys, 100)
+        // const newArr = chunk(keys, 100)
         // newArr.forEach( item => {
         //   item.forEach( key => {
         //     if (this.selectedKeys.some( t => t === key)) {
@@ -326,6 +336,7 @@
 <style lang="scss" scoped>
   @import '../css/variable';
   .aside-menu {
+    height: 100%;
     .el-menu-vertical-three {
       font-size: 14px;
       width: 99%;

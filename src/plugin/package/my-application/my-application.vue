@@ -114,9 +114,9 @@
   const paddingLeft = 3
   const leftMinWidth = 0
   window.jtWeb = null
-  import jt_web from '@ithinkdt/jt-web';
+  import jt_web from '@ithinkdt/jt-web-3d';
   import { formatModelData, hanlderSelectData, isResetModelData } from '../../utils/format'
-  import _ from 'lodash'
+  import { cloneDeep } from 'lodash'
   export default {
     name: 'MyApplication',
     data() {
@@ -195,15 +195,13 @@
         handler: function(data) {
           // 重新创建jt_web
           this.createJtWeb()
-
           formatModelData([data], [])
-          const obj = _.cloneDeep(data);
+          const obj = cloneDeep(data);
           this.modelTreeData = [obj]
-          if (!isResetModelData()) {
-            window.jtWeb.render(obj);
-          } else {
-            window.jtWeb.refresh(obj)
+          if (isResetModelData()) {
+            window.jtWeb.clear()
           }
+          window.jtWeb.render(obj);
         },
         deep: true
       },
@@ -275,7 +273,7 @@
             onLoad() {
               _self.$emit('setApploading', false)
               window.viewerManager.viewer.addEventListener("pointSelectedEvent", (pointIndexs) => {
-                _self.$emit('selectPointChange', pointIndexs.data)
+                _self.$emit('selectPointChange', pointIndexs)
               });
               // 测点右击事件
               window.viewerManager.viewer.addEventListener("pointContextEvent", (pointIndex) => {
@@ -296,7 +294,7 @@
               this.$emit('fetchJtFile', {fileId, cb})
             },
           },
-        };
+        }
       },
 
       /**
