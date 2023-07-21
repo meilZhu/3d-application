@@ -80,22 +80,6 @@ export const formatModelData = (list, arr) => {
   }
 }
 
-// export const hanlderSelectData = (list, arr) => {
-//   if (list && list.length) {
-//     list.forEach(l => {
-//       if (arr.some(t => t === l.key)) {
-//         l.isSelected = true
-//       } else {
-//         l.isSelected = false
-//       }
-
-//       if (l.children) {
-//         hanlderSelectData(l.children, arr)
-//       }
-//     })
-//   }
-// }
-
 /**
  * @description 用于处理3d左侧树形结构眼睛点击时，父节点的选中问题
  * @param list // 需要遍历的数组
